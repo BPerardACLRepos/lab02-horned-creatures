@@ -35,23 +35,22 @@ export default class App extends React.Component {
     keyword: ''
   }
 
-
   render() {
 
+    const filteredArray = ImageArray.filter((animal) => {
 
-    { console.log(this.state.keyword, this.state.horns, 'yo') };
-
-
-    const filtered = ImageArray.filter((animal) => {
-      console.log(typeof animal.horns, typeof this.state.horns);
+      // no filter selected
       if (!this.state.horns && !this.state.keyword) return true;
+
+      // horns filter selected
       if (!this.state.keyword && parseInt(this.state.horns) === animal.horns) return true;
+
+      // keyword filter selected
       if (!this.state.horns && this.state.keyword === animal.keyword) return true;
+
+      // horns & keyword filter selected
       if (parseInt(this.state.horns) === animal.horns && this.state.keyword === animal.keyword) return true;
     });
-
-    console.log(filtered);
-
 
     return (
       <div>
@@ -62,7 +61,6 @@ export default class App extends React.Component {
             <select value={this.state.horns}
               onChange={(e) => {
                 this.setState({ horns: e.target.value });
-                console.log(this.state.horns);
               }}>
               {hornSelect}
             </select>
@@ -72,13 +70,12 @@ export default class App extends React.Component {
             <select value={this.state.keyword}
               onChange={(e) => {
                 this.setState({ keyword: e.target.value });
-                console.log(this.state.keyword);
               }}>
               {keywordSelect}
             </select>
           </label>
         </div>
-        <ImageList imagesArray={ImageArray} />
+        <ImageList imagesArray={filteredArray} />
       </div>
     );
   }
