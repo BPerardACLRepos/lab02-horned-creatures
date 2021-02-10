@@ -4,8 +4,11 @@ import ImageList from './ImageList/ImageList.js';
 import ImageArray from './Data/ImagesArray.js';
 import './App.css';
 
+// select option array with blank starting value
 const hornAmounts = [''];
 const uniqueKeywords = [''];
+
+// derive option values from data
 ImageArray.map((animal) => {
   if (uniqueKeywords.indexOf(animal.keyword) === -1) {
     uniqueKeywords.push(animal.keyword);
@@ -15,6 +18,7 @@ ImageArray.map((animal) => {
   }
 });
 
+// map option values to option elements
 const hornSelect = hornAmounts.map((amount, index) =>
   <option key={index} value={amount}>
     {amount}
@@ -37,6 +41,7 @@ export default class App extends React.Component {
 
   render() {
 
+    // filter complete data set for ImageList props
     const filteredArray = ImageArray.filter((animal) => {
 
       // no filter selected
