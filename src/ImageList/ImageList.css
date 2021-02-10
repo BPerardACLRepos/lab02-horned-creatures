@@ -1,0 +1,22 @@
+.hornedCreatureDiv {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.hornedCreatureDiv label {
+    background-color: #c4d5e6;
+    border: 1px solid #6a5acd;
+    margin: 3px;
+}
+
+.hornedCreatureDiv p {
+    padding: 7%;
+}
+
+.hornedCreatureDiv img {
+    align-items: center;
+    width: 35%;
+}
