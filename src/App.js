@@ -42,6 +42,15 @@ export default class App extends React.Component {
     { console.log(this.state.keyword, this.state.horns, 'yo') };
 
 
+    const filtered = ImageArray.filter((animal) => {
+      console.log(typeof animal.horns, typeof this.state.horns);
+      if (!this.state.horns && !this.state.keyword) return true;
+      if (!this.state.keyword && parseInt(this.state.horns) === animal.horns) return true;
+      if (!this.state.horns && this.state.keyword === animal.keyword) return true;
+      if (parseInt(this.state.horns) === animal.horns && this.state.keyword === animal.keyword) return true;
+    });
+
+    console.log(filtered);
 
 
     return (
