@@ -4,8 +4,8 @@ import ImageList from './ImageList/ImageList.js';
 import ImageArray from './Data/ImagesArray.js';
 import './App.css';
 
-const hornAmounts = [];
-const uniqueKeywords = [];
+const hornAmounts = [''];
+const uniqueKeywords = [''];
 ImageArray.map((animal) => {
   if (uniqueKeywords.indexOf(animal.keyword) === -1) {
     uniqueKeywords.push(animal.keyword);
@@ -32,13 +32,14 @@ export default class App extends React.Component {
 
   state = {
     horns: '',
-    keyword: '',
+    keyword: ''
   }
+
 
   render() {
 
 
-
+    { console.log(this.state.keyword, 'yo') };
 
 
 
@@ -47,18 +48,24 @@ export default class App extends React.Component {
       <div>
         <Header />
         <div className='selectors'>
-          <label>
-            <h4>Horns</h4>
-            <select>
-              {hornSelect}
-            </select>
-          </label>
-          <label>
-            <h4>Keyword</h4>
-            <select>
-              {keywordSelect}
-            </select>
-          </label>
+          <form>
+            <label>
+              <h4>Horns</h4>
+              <select>
+                {hornSelect}
+              </select>
+            </label>
+            <label>
+              <h4>Keyword</h4>
+              <select value={this.state.keyword}
+                onChange={(e) => {
+                  this.setState({ keyword: e.target.value });
+                  console.log(this.state.keyword);
+                }}>
+                {keywordSelect}
+              </select>
+            </label>
+          </form>
         </div>
         <ImageList imagesArray={ImageArray} />
       </div>
