@@ -39,7 +39,7 @@ export default class App extends React.Component {
   render() {
 
 
-    { console.log(this.state.keyword, 'yo') };
+    { console.log(this.state.keyword, this.state.horns, 'yo') };
 
 
 
@@ -48,24 +48,26 @@ export default class App extends React.Component {
       <div>
         <Header />
         <div className='selectors'>
-          <form>
-            <label>
-              <h4>Horns</h4>
-              <select>
-                {hornSelect}
-              </select>
-            </label>
-            <label>
-              <h4>Keyword</h4>
-              <select value={this.state.keyword}
-                onChange={(e) => {
-                  this.setState({ keyword: e.target.value });
-                  console.log(this.state.keyword);
-                }}>
-                {keywordSelect}
-              </select>
-            </label>
-          </form>
+          <label>
+            <h4>Horns</h4>
+            <select value={this.state.horns}
+              onChange={(e) => {
+                this.setState({ horns: e.target.value });
+                console.log(this.state.horns);
+              }}>
+              {hornSelect}
+            </select>
+          </label>
+          <label>
+            <h4>Keyword</h4>
+            <select value={this.state.keyword}
+              onChange={(e) => {
+                this.setState({ keyword: e.target.value });
+                console.log(this.state.keyword);
+              }}>
+              {keywordSelect}
+            </select>
+          </label>
         </div>
         <ImageList imagesArray={ImageArray} />
       </div>
