@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageItem from './ImageItem/ImageItem.js';
 import './ImageList.css';
 
 export default class ImageList extends React.Component {
